@@ -1,34 +1,57 @@
 #include <iostream>
 #include <stdlib.h> //lib para limpar a tela
-#include <locale.h> //lib para passar para português
+#include <locale.h> //lib para passar para portuguï¿½s
 using namespace std;
 int main()
 {
-    setlocale(LC_ALL, "Portuguese"); //Atribuição do portugues
+    setlocale(LC_ALL, "Portuguese"); //Atribuiï¿½ï¿½o do portugues
     //Minha mensagem no menu, endl significa quebra da linha
     int valor;
-    cout << "Minha *Calculadora* de Bases" << endl;
-    cout << "Informe uma das opções" << endl;
-    cout << "1- Decimal para Binário" << endl;
-    cout << "2- Binário para Decimal" << endl;
+    bool executa = true;
+    while (executa)
+    {
+        system("clear||cls");
+        cout << "Minha *Calculadora* de Bases" << endl;
+        cout << "Informe uma das opï¿½ï¿½es" << endl;
+        cout << "1- Decimal para Binï¿½rio" << endl;
+        cout << "2- Binï¿½rio para Decimal" << endl;
+        cout << "0- Para sair" << endl;
 
-    //Aqui faço a leitura do valor digitado
-    cin >> valor;
-    system("clear||cls");// Aqui limpo a tela
-    //cout << endl << "O valor digitado foi: " << valor << endl;
-    if(valor == 1){
-        int decimal;
-        cout << "1 - Conversão de Decimal para Binário " << endl;
-        cin >> decimal;
-        cout << endl << "O valor decimal foi: " << decimal << endl;
-    }else{
-        if(valor == 2){
-            int binario;
-            cout << "2 - Conversão de Binário para Decimal" << endl;
-            cin >> binario;
-            cout << endl << "O valor decimal foi: " << binario << endl;
-        }else{
-            cout << "Favor entre com um valor válido!!! " << endl;
+        //Aqui faï¿½o a leitura do valor digitado
+        cin >> valor;
+
+        system("clear||cls"); // Aqui limpo a tela
+                              //cout << endl << "O valor digitado foi: " << valor << endl;
+        if (valor == 0)
+        {
+            executa = false;
+            exit;
+        }
+        else
+        {
+            if (valor == 1)
+            {
+                int decimal;
+                cout << "1 - Conversï¿½o de Decimal para Binï¿½rio " << endl;
+                cin >> decimal;
+                cout << endl
+                     << "O valor decimal foi: " << decimal << endl;
+            }
+            else
+            {
+                if (valor == 2)
+                {
+                    int binario;
+                    cout << "2 - Conversï¿½o de Binï¿½rio para Decimal" << endl;
+                    cin >> binario;
+                    cout << endl
+                         << "O valor decimal foi: " << binario << endl;
+                }
+                else
+                {
+                    cout << "Favor entre com um valor vï¿½lido!!! " << endl;
+                }
+            }
         }
     }
     return 0;
