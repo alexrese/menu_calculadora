@@ -1,28 +1,31 @@
 #include <iostream>
 #include <stdlib.h> //lib para limpar a tela
-#include <locale.h> //lib para passar para portugu�s
+#include <locale.h> //lib para passar para português
+#include <math.h> //lib para potencia
+
 using namespace std;
 int main()
 {
-    setlocale(LC_ALL, "Portuguese"); //Atribui��o do portugues
+    setlocale(LC_ALL, "Portuguese"); //Atribuição do portugues
     //Minha mensagem no menu, endl significa quebra da linha
     int valor;
     bool executa = true;
+    int bin[8];
+
     while (executa)
     {
         system("clear||cls");
         cout << "Minha *Calculadora* de Bases" << endl;
-        cout << "Informe uma das op��es" << endl;
-        cout << "1- Decimal para Bin�rio" << endl;
-        cout << "2- Bin�rio para Decimal" << endl;
+        cout << "Informe uma das opções" << endl;
+        cout << "1- Decimal para Binário" << endl;
+        cout << "2- Binário para Decimal" << endl;
         cout << "0- Para sair" << endl;
 
-        //Aqui fa�o a leitura do valor digitado
+        //Aqui faça a leitura do valor digitado
         cin >> valor;
 
         system("clear||cls"); // Aqui limpo a tela
-                              //cout << endl << "O valor digitado foi: " << valor << endl;
-        if (valor == 0)
+        if (valor == 0)       //Se o valor digitado por 0 então encerra o loop
         {
             executa = false;
             exit;
@@ -32,24 +35,48 @@ int main()
             if (valor == 1)
             {
                 int decimal;
-                cout << "1 - Convers�o de Decimal para Bin�rio " << endl;
-                cin >> decimal;
-                cout << endl
-                     << "O valor decimal foi: " << decimal << endl;
+                cout << "1 - Conversão de Decimal para Binário " << endl;
+                cin >> decimal; //Pega o valor em decimal
+                for (int i = 7; i >= 0; i--)
+                {
+                    if (decimal % 2 == 0) //Se o valor decimal mod 2 igual a 0, preenche na posição do array
+                    {
+                        bin[i] = 0;
+                    }
+                    else
+                    { //Senão preenche com  na posição do array
+                        bin[i] = 1;
+                    }
+                    decimal = decimal / 2; // divide o decimal por 2
+                }
+                //Imprime em tela
+                for (int i = 0; i < 8; i++)
+                {
+                    cout << bin[i];
+                }
+                cout << endl << "Digite um número para continuar" << endl;
+                cin >> valor;
             }
             else
             {
                 if (valor == 2)
                 {
                     int binario;
-                    cout << "2 - Convers�o de Bin�rio para Decimal" << endl;
+                    int dec = 0; 
+                    cout << "2 - Conversão de Binário para Decimal" << endl;
                     cin >> binario;
-                    cout << endl
-                         << "O valor decimal foi: " << binario << endl;
+                    for (int i = 0; binario > 0; i++) //aqui utilizamos o número total do binário
+                    {
+                        dec = dec + pow(2, i) * (binario % 10); //elevamos ao quadrado o indice e multiplicamos pelo modulo do número binário
+                        binario = binario / 10; //dividimos o número binário por 10
+                    }
+                    cout << dec;
+                    cout << endl << "Digite um número para continuar" << endl;
+                    cin >> valor;
                 }
                 else
                 {
-                    cout << "Favor entre com um valor v�lido!!! " << endl;
+                    cout << "Favor entre com um valor válido!!! " << endl;
                 }
             }
         }
